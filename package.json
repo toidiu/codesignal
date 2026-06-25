@@ -1,0 +1,14 @@
+{
+  "name": "test_ts",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "run": "node dist/main.js",
+    "dev": "ts-node src/main.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "ts-node": "^10.9.2",
+    "@types/node": "^20.0.0"
+  }
+}
