@@ -9,61 +9,128 @@ Reference docs live in `practice/` (`CHEATSHEET.md`, `FORMAT.md`, `SKILL.md`).
 
 Graded on passing tests fast, not code quality — so favor plain, correct, fast code.
 
-- [ ] **`Map`** (≈ Rust `HashMap`)
-  - [ ] `m.set(k, v)`
-  - [ ] `m.get(k)` — returns `undefined` if absent
-  - [ ] `m.has(k)`
-  - [ ] `m.delete(k)` — returns `boolean`
-  - [ ] `m.size`
-  - [ ] iterate: `for (const [k, v] of m)`
-  - [ ] `[...m.keys()]` / `[...m.values()]` / `[...m.entries()]`
-  - [ ] default on missing: `m.get(k) ?? fallback`
-- [ ] **`Set`** (≈ Rust `HashSet`)
-  - [ ] `s.add(x)`
-  - [ ] `s.has(x)`
-  - [ ] `s.delete(x)`
-  - [ ] `s.size`
-  - [ ] to array: `[...s]`
-- [ ] **Objects / nested maps as records**
-  - [ ] "Map of entities, each a Map of fields"
-  - [ ] create-if-missing then set (the `computeIfAbsent` pattern)
-- [ ] **Array methods**
-  - [ ] `map`
-  - [ ] `filter`
-  - [ ] `reduce`
-  - [ ] `find` / `some` / `every`
-  - [ ] `slice(0, n)` (non-mutating)
-- [ ] **Sorting**
-  - [ ] numeric: `arr.sort((a, b) => a - b)` (never bare `sort()`)
-  - [ ] descending: `(a, b) => b - a`
-  - [ ] tiebreaker: `b.n - a.n || a.name.localeCompare(b.name)`
-- [ ] **Top-N rankings** — sort then `slice(0, n)`
-- [ ] **Strings**
-  - [ ] `split`
-  - [ ] `startsWith` (prefix matching)
-  - [ ] `includes`
-  - [ ] template literals `` `${k}(${v})` ``
-  - [ ] `localeCompare` for sort tiebreaks
-- [ ] **null / undefined handling**
-  - [ ] optional chaining `?.`
-  - [ ] nullish coalescing `??`
-  - [ ] treat every `.get` as `T | undefined`
-- [ ] **Timestamps / TTL math** — alive iff `setAt <= now < setAt + ttl`
-- [ ] **Deep clone for snapshots**
-  - [ ] `structuredClone(x)`
-  - [ ] nested map: `new Map([...m].map(([k, v]) => [k, new Map(v)]))`
-- [ ] **Class holding state** — central state object, methods per operation
-- [ ] **`async`/`await` + `Promise<T>`** (in case the spec is async)
+### `Map` (≈ Rust `HashMap`)
+
+- [ ] set / overwrite a value  
+  `m.set(k, v)`
+- [ ] get a value — `undefined` if absent  
+  `m.get(k)`
+- [ ] check membership  
+  `m.has(k)`
+- [ ] remove — returns `boolean`  
+  `m.delete(k)`
+- [ ] number of entries  
+  `m.size`
+- [ ] iterate entries  
+  `for (const [k, v] of m) { }`
+- [ ] all keys  
+  `[...m.keys()]`
+- [ ] all values  
+  `[...m.values()]`
+- [ ] all entries  
+  `[...m.entries()]`
+- [ ] default when missing  
+  `m.get(k) ?? fallback`
+
+### `Set` (≈ Rust `HashSet`)
+
+- [ ] add  
+  `s.add(x)`
+- [ ] check membership  
+  `s.has(x)`
+- [ ] remove  
+  `s.delete(x)`
+- [ ] size  
+  `s.size`
+- [ ] to array  
+  `[...s]`
+
+### Objects / nested maps as records
+
+- [ ] model: "Map of entities, each a Map of fields"
+- [ ] create-if-missing, then set (the `computeIfAbsent` pattern)
+
+### Array methods
+
+- [ ] transform each element  
+  `arr.map(x => ...)`
+- [ ] keep matching elements  
+  `arr.filter(x => ...)`
+- [ ] fold to one value  
+  `arr.reduce((acc, x) => ..., init)`
+- [ ] search for one element  
+  `arr.find(x => ...)`
+- [ ] any / all match  
+  `arr.some(...)` · `arr.every(...)`
+- [ ] first n, non-mutating  
+  `arr.slice(0, n)`
+
+### Sorting
+
+- [ ] numeric ascending (never bare `sort()`)  
+  `arr.sort((a, b) => a - b)`
+- [ ] descending  
+  `arr.sort((a, b) => b - a)`
+- [ ] with tiebreaker  
+  `(a, b) => b.n - a.n || a.name.localeCompare(b.name)`
+
+### Top-N rankings
+
+- [ ] sort, then take the first n  
+  `sorted.slice(0, n)`
+
+### Strings
+
+- [ ] split into parts  
+  `s.split('/')`
+- [ ] prefix match  
+  `s.startsWith('pre')`
+- [ ] contains  
+  `s.includes('x')`
+- [ ] build an output string  
+  `` `${k}(${v})` ``
+- [ ] compare for sort tiebreaks  
+  `a.localeCompare(b)`
+
+### null / undefined handling
+
+- [ ] optional chaining  
+  `a?.b?.c`
+- [ ] nullish coalescing  
+  `value ?? fallback`
+- [ ] treat every `.get` as `T | undefined`
+
+### Timestamps / TTL math
+
+- [ ] alive iff `setAt <= now < setAt + ttl`
+
+### Deep clone for snapshots
+
+- [ ] deep clone one value  
+  `structuredClone(x)`
+- [ ] clone a nested map  
+  `new Map([...m].map(([k, v]) => [k, new Map(v)]))`
+
+### Class holding state
+
+- [ ] central state object, one method per operation
+
+### async (only if the spec is async)
+
+- [ ] `async` / `await` with `Promise<T>`
 
 ## B. TS traps to internalize (Rust-dev edition)
 
-- [ ] `sort()` without a comparator **stringifies** numbers
-- [ ] `map.forEach((value, key))` — **value is first**
-- [ ] `typeof null === 'object'`, `typeof [] === 'object'` → use `Array.isArray`
-- [ ] `===` only (no `==`); objects compare by **identity**, not value
-- [ ] Composite keys → serialize to a string (`` `${x},${y}` ``)
-- [ ] Integer math needs `Math.floor`; all numbers are floats
-- [ ] `Map.get(k)` vs object `obj[k]` — don't mix them
+- [ ] bare `sort()` sorts numbers as strings — always pass a comparator  
+  `arr.sort((a, b) => a - b)`
+- [ ] `forEach` passes **value first**, then key  
+  `m.forEach((value, key) => ...)`
+- [ ] `typeof null` and `typeof []` are both `'object'` — use `Array.isArray`
+- [ ] use `===` only; objects compare by **identity**, not value
+- [ ] composite keys: serialize to a string  
+  `` `${x},${y}` ``
+- [ ] integer math needs `Math.floor` (all numbers are floats)
+- [ ] don't mix `Map.get(k)` with object `obj[k]`
 
 ## C. Strategy reminders
 
