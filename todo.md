@@ -1,7 +1,7 @@
 # TS Assessment Prep — Checklist
 
 Track everything here. Check items off as you go: `[ ]` → `[x]`.
-Reference docs live in `practice/` (`CHEATSHEET.md`, `FORMAT.md`, `RAMP.md`).
+Reference docs live in `practice/` (`CHEATSHEET.md`, `FORMAT.md`, `SKILL.md`).
 
 ---
 
@@ -9,15 +9,49 @@ Reference docs live in `practice/` (`CHEATSHEET.md`, `FORMAT.md`, `RAMP.md`).
 
 Graded on passing tests fast, not code quality — so favor plain, correct, fast code.
 
-- [ ] **`Map` / `Set`** — `get/set/has/delete/entries`, `get(k) ?? default`. (≈ Rust `HashMap`/`HashSet`)
-- [ ] **Objects / nested maps as records** — "Map of entities, each a Map of fields"
-- [ ] **Array methods** — `map`, `filter`, `reduce`, `find`, `slice`, `some/every`
-- [ ] **Sorting with comparators + tiebreakers** — `b.n - a.n || a.name.localeCompare(b.name)`
+- [ ] **`Map`** (≈ Rust `HashMap`)
+  - [ ] `m.set(k, v)`
+  - [ ] `m.get(k)` — returns `undefined` if absent
+  - [ ] `m.has(k)`
+  - [ ] `m.delete(k)` — returns `boolean`
+  - [ ] `m.size`
+  - [ ] iterate: `for (const [k, v] of m)`
+  - [ ] `[...m.keys()]` / `[...m.values()]` / `[...m.entries()]`
+  - [ ] default on missing: `m.get(k) ?? fallback`
+- [ ] **`Set`** (≈ Rust `HashSet`)
+  - [ ] `s.add(x)`
+  - [ ] `s.has(x)`
+  - [ ] `s.delete(x)`
+  - [ ] `s.size`
+  - [ ] to array: `[...s]`
+- [ ] **Objects / nested maps as records**
+  - [ ] "Map of entities, each a Map of fields"
+  - [ ] create-if-missing then set (the `computeIfAbsent` pattern)
+- [ ] **Array methods**
+  - [ ] `map`
+  - [ ] `filter`
+  - [ ] `reduce`
+  - [ ] `find` / `some` / `every`
+  - [ ] `slice(0, n)` (non-mutating)
+- [ ] **Sorting**
+  - [ ] numeric: `arr.sort((a, b) => a - b)` (never bare `sort()`)
+  - [ ] descending: `(a, b) => b - a`
+  - [ ] tiebreaker: `b.n - a.n || a.name.localeCompare(b.name)`
 - [ ] **Top-N rankings** — sort then `slice(0, n)`
-- [ ] **Strings** — `split`, `startsWith`, `includes`, template literals, prefix matching
-- [ ] **null / undefined handling** — `?.`, `??`, treat every `.get` as `T | undefined`
+- [ ] **Strings**
+  - [ ] `split`
+  - [ ] `startsWith` (prefix matching)
+  - [ ] `includes`
+  - [ ] template literals `` `${k}(${v})` ``
+  - [ ] `localeCompare` for sort tiebreaks
+- [ ] **null / undefined handling**
+  - [ ] optional chaining `?.`
+  - [ ] nullish coalescing `??`
+  - [ ] treat every `.get` as `T | undefined`
 - [ ] **Timestamps / TTL math** — alive iff `setAt <= now < setAt + ttl`
-- [ ] **Deep clone for snapshots** — `structuredClone`, or `new Map([...].map(...))`
+- [ ] **Deep clone for snapshots**
+  - [ ] `structuredClone(x)`
+  - [ ] nested map: `new Map([...m].map(([k, v]) => [k, new Map(v)]))`
 - [ ] **Class holding state** — central state object, methods per operation
 - [ ] **`async`/`await` + `Promise<T>`** (in case the spec is async)
 
