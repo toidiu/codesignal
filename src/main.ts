@@ -10,4 +10,11 @@ function main() {
   console.log(`${rainer.name} is ${rainer.height} feet high and is ${difficult} to climb.`);
 }
 
+let person = {name: "bla"};
+type Person = typeof person;
+type PK = keyof Person;
+
+console.log(typeof person);
+console.log(typeof PK);
+
 main();
