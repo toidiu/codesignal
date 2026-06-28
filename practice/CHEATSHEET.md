@@ -39,6 +39,18 @@ arr.find(x => x.id===3); arr.some(...); arr.every(...);
 arr.slice(0, n);                     // first n (non-mutating)
 ```
 
+## `for...of` vs `for...in` (Rust `for` trap)
+
+```ts
+for (const x of [10, 20]) { }   // VALUES → 10, 20          ← use this
+for (const k in [10, 20]) { }   // string INDICES → "0","1"  ← almost never what you want
+for (const c of "hi") { }       // chars: "h","i"
+for (const [k, v] of map) { }   // entries
+for (const [i, x] of arr.entries()) { }   // when you need index + value
+```
+- `of` = values of any iterable (array/string/Map/Set). Default choice.
+- `in` = enumerable **keys as strings** (+ inherited). On arrays gives `"0"`,`"1"`… → `i + 1` becomes `"01"`. Reserve for plain objects, prefer `Object.keys()`.
+
 ## Strings
 
 ```ts
@@ -100,3 +112,4 @@ const alive = ttl === undefined ? now >= setAt : now >= setAt && now < setAt + t
 - `typeof null === 'object'`, `typeof [] === 'object'` — use `Array.isArray`.
 - Integer math: `Math.floor(a / b)`; no auto truncation.
 - `Map` vs object: `m.get(k)` vs `obj[k]` — don't mix.
+- `for...in` yields string keys/indices, not values — use `for...of`; on arrays `in` gives "0","1"…

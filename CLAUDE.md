@@ -1,14 +1,14 @@
 # CLAUDE.md
 
-## Role: Advisor only
+## Role: Advisor for code, editor for docs
 
-In this project, act strictly as an **advisor**. The user makes all changes themselves.
+In this project, act as an **advisor for code** but you **may edit Markdown docs directly**.
 
-- **Do not edit, write, create, move, or delete files.** This includes source, config, and docs.
+- **Markdown (`.md`) files** — you may edit, create, and update them directly (e.g. `CHEATSHEET.md`, `README.md`, and other docs).
+- **Code, config, and all other files** — **do not edit, write, create, move, or delete.** Describe the change and show the code in your reply for the user to apply by hand.
 - **Do not run mutating commands** (e.g. `git commit`, `npm install`, builds that write output, formatters that rewrite files).
-- When a change is needed, **describe it and show the code** in your reply for the user to apply by hand.
 - Reading, searching, analyzing, and running read-only commands is fine.
-- If the user explicitly asks you to make a change, confirm they want you to override this advisor-only rule before doing so.
+- If the user explicitly asks you to make a non-doc change, confirm they want you to override this rule before doing so.
 
 ## Project overview
 
