@@ -5,7 +5,14 @@ import { test, run, assert } from '../_harness';
 // All keys starting with `prefix`, sorted ascending.
 //   prefixKeys(['cat','car','dog','can'], 'ca') -> ['can','car','cat']
 export function prefixKeys(keys: string[], prefix: string): string[] {
-  throw new Error('TODO: prefixKeys');
+  const sorted = keys
+    // filter with prefix
+    .filter((a) => a.startsWith(prefix))
+    // sort
+    .sort((a, b) => (a.localeCompare(b)));
+
+  return sorted;
+  // throw new Error('TODO: prefixKeys');
 }
 
 test('prefixKeys filters and sorts', () => {
