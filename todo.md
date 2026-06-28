@@ -164,8 +164,8 @@ Run all: `make skill`  ·  one at a time: `make skill1` … `make skill9`
 
 - [x] 1. `1-wordcount.ts` — count into a Map
 - [x] 2. `2-topn.ts` — rank by count desc, name asc
-- [ ] 3. `3-prefixkeys.ts` — prefix filter + sort
-- [ ] 4. `4-safeget.ts` — undefined → default
+- [x] 3. `3-prefixkeys.ts` — prefix filter + sort
+- [x] 4. `4-safeget.ts` — undefined → default
 - [ ] 5. `5-isalive.ts` — TTL window
 - [ ] 6. `6-clonestate.ts` — deep clone nested Map
 - [ ] 7. `7-counter.ts` — stateful class + ranking

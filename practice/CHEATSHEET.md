@@ -137,6 +137,19 @@ const copy = new Map([...m].map(([k, inner]) => [k, new Map(inner)]));
 const alive = ttl === undefined ? now >= setAt : now >= setAt && now < setAt + ttl;
 ```
 
+## Asserts (`node:assert`, what the harness re-exports)
+
+```ts
+assert.strictEqual(a, b);      // === : PRIMITIVES (number/string/boolean/null/undefined)
+assert.deepStrictEqual(a, b);  // recursive === : OBJECTS / arrays / Maps / Sets / nested
+assert.ok(x);                  // truthy condition, e.g. assert.ok(m.has('a'))
+assert.throws(() => f());      // f must throw
+```
+- Rule: **primitive → `strictEqual`, object/array/Map → `deepStrictEqual`.**
+  Objects compare by identity under `===`, so two equal-shaped objects fail `strictEqual`.
+- Avoid the non-strict `equal` / `deepEqual` — they use coercing `==` (`1 == '1'`). Always use the `strict` ones.
+- `deepStrictEqual` also checks type/prototype (array ≠ object), and treats `NaN === NaN` as equal.
+
 ## Gotchas list
 
 - `sort()` without comparator stringifies.
