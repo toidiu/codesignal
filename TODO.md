@@ -128,7 +128,7 @@ Run all: `make skill`  ·  one at a time: `make skill1` … `make skill17`
 - [x] 5. `5-isalive.ts` — TTL window
 - [x] 6. `6-clonestate.ts` — deep clone nested Map
 - [x] 7. `7-counter.ts` — stateful class + ranking
-- [ ] 8. `8-generics.ts` — generics: `<T>`, `<K>`, generic over `Map`
+- [x] 8. `8-generics.ts` — generics: `<T>`, `<K>`, generic over `Map`
 - [ ] 9. `9-optresult.ts` — `Option<T>` / `Result<T,E>` tagged unions
 - [ ] 10. `10-strings.ts` — split / prefix / `localeCompare` / `"k(v)"` output
 - [ ] 11. `11-arrays.ts` — map/filter/reduce/find + non-mutating sort

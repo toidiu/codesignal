@@ -5,13 +5,40 @@ import { test, run, assert } from '../_harness';
 // groupBy: bucket items by a derived key. <T> = item type, <K> = key type.
 //   groupBy([1,2,3,4], x => x % 2) -> Map { 1 => [1,3], 0 => [2,4] }
 export function groupBy<T, K>(items: T[], key: (x: T) => K): Map<K, T[]> {
-  throw new Error('TODO: groupBy');
+  const map = new Map<K, T[]>();
+
+  for (const item of items) {
+    const k = key(item);
+    const arr = getOrCreate(map, k, () => []);
+    arr.push(item);
+  }
+
+  return map;
+}
+
+function getOrCreate<K, V>(map: Map<K, V>, k: K, def: () => V): V {
+  if (!map.has(k)) {
+    map.set(k, def());
+  }
+
+  return map.get(k)!;
 }
 
 // maxBy: the item with the highest score, or undefined if empty.
 //   <T> flows in and back out unchanged; the callback scores each item.
 export function maxBy<T>(items: T[], score: (x: T) => number): T | undefined {
-  throw new Error('TODO: maxBy');
+  if (items.length === 0) {
+    return undefined;
+  }
+
+  const a = items.reduce((max_val, x_val) => {
+    const x_score = score(x_val);
+    const max_score = score(max_val);
+
+    return x_score > max_score ? x_val : max_val;
+  });
+
+  return a;
 }
 
 test('groupBy buckets by key', () => {
