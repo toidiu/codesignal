@@ -42,6 +42,22 @@ s.add('x'); s.has('x'); s.delete('x'); s.size;
 [...s];                              // to array
 ```
 
+## Spread `[...]` — iterator/iterable → array (your `.collect::<Vec<_>>()`)
+
+`map.entries()` / `.keys()` / `.values()` return a **lazy one-shot iterator**, NOT an array — no
+`.sort`/`.map`/`.slice`/`.length`. Spread (or `Array.from`) drains it into a real array first.
+
+```ts
+counts.entries();              // MapIterator — only .next(); .sort is NOT a function
+[...counts.entries()];         // [[k,v], …]  real array → .sort/.map/.slice work
+[...counts];                   // SAME (a Map iterates as entries)
+[...counts.keys()];            // just keys     [...counts.values()];  // just values
+Array.from(counts.entries());  // identical, non-spread spelling
+[...'hi'];                     // ['h','i']   any iterable: string/Set/Map/generator
+const merged = [...a, ...b];   // concat arrays     { ...o1, ...o2 }  // merge objects
+fn(...args);                   // spread as call arguments
+```
+
 ## Arrays / sorting (the #1 trap)
 
 ```ts

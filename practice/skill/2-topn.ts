@@ -5,7 +5,19 @@ import { test, run, assert } from '../_harness';
 // Names of the top `n` entries, by count desc, then name asc.
 //   topN(Map{banana:2, apple:2, cherry:5}, 2) -> ['cherry', 'apple']
 export function topN(counts: Map<string, number>, n: number): string[] {
-  throw new Error('TODO: topN');
+  const e = [...counts.entries()];
+
+  // sort
+  const m = e.sort((a, b) => (
+    //  by count desc
+    (b[1] - a[1])
+    //  by name asc
+      || a[0].localeCompare(b[0])
+  ));
+
+  const sorted = e.map((a) => a[0]);
+  return sorted.slice(0, n)
+  // throw new Error('TODO: topN');
 }
 
 test('topN: count desc, then name asc', () => {

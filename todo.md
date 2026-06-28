@@ -163,7 +163,7 @@ Graded on passing tests fast, not code quality — so favor plain, correct, fast
 Run all: `make skill`  ·  one at a time: `make skill1` … `make skill9`
 
 - [x] 1. `1-wordcount.ts` — count into a Map
-- [ ] 2. `2-topn.ts` — rank by count desc, name asc
+- [x] 2. `2-topn.ts` — rank by count desc, name asc
 - [ ] 3. `3-prefixkeys.ts` — prefix filter + sort
 - [ ] 4. `4-safeget.ts` — undefined → default
 - [ ] 5. `5-isalive.ts` — TTL window
