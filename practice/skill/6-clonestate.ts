@@ -6,7 +6,18 @@ import { test, run, assert } from '../_harness';
 export function cloneState(
   state: Map<string, Map<string, string>>,
 ): Map<string, Map<string, string>> {
-  throw new Error('TODO: cloneState');
+  // return structuredClone(state);
+
+  let arr = [...state];
+  let clone = new Map(
+      arr.map(
+        ([k, inner]) => (
+          [k, new Map(inner)]
+        )
+      )
+  );
+
+  return clone;
 }
 
 test('cloneState is a deep copy', () => {
