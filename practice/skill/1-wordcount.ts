@@ -5,7 +5,23 @@ import { test, run, assert } from '../_harness';
 // Count occurrences of each word.
 //   wordCount(['a','b','a']) -> Map { 'a' => 2, 'b' => 1 }
 export function wordCount(words: string[]): Map<string, number> {
-  throw new Error('TODO: wordCount');
+  const map = new Map();
+
+  for (c on words) {
+    let v = map.getOrCreate(c);
+    map.set(c, v + 1);
+  }
+
+  m
+  // throw new Error('TODO: wordCount');
+}
+
+function getOrCreate<K, V>(m: Map<K, V>, k: K, def: () => V): V {
+  if (m.get(k) === undefined) {
+    m.set(k, def());
+  }
+
+  return m.get(k)!;
 }
 
 test('wordCount counts occurrences', () => {
