@@ -115,6 +115,22 @@ Graded on passing tests fast, not code quality — so favor plain, correct, fast
 
 - [ ] central state object, one method per operation
 
+### Generics
+
+- [ ] generic function with one type param  
+  `function id<T>(x: T): T`
+- [ ] second type param + callback  
+  `function groupBy<T, K>(xs: T[], key: (x: T) => K): Map<K, T[]>`
+- [ ] generic returning `T | undefined`  
+  `function maxBy<T>(xs: T[], score: (x: T) => number): T | undefined`
+
+### Option / Result (Rust-style tagged unions)
+
+- [ ] model with a discriminated union  
+  `type Option<T> = { kind: 'some'; value: T } | { kind: 'none' }`  
+  `type Result<T, E> = { kind: 'ok'; value: T } | { kind: 'err'; error: E }`
+- [ ] narrow on the `kind` tag, e.g. `unwrapOr`
+
 ### async (only if the spec is async)
 
 - [ ] `async` / `await` with `Promise<T>`
@@ -144,16 +160,18 @@ Graded on passing tests fast, not code quality — so favor plain, correct, fast
 
 ## D. Skill drills (do FIRST) — `practice/skill/`
 
-Run all: `make skill`  ·  one at a time: `make skill1` … `make skill7`
+Run all: `make skill`  ·  one at a time: `make skill1` … `make skill9`
 
-- [ ] 1. `1-wordcount.ts` — count into a Map
+- [x] 1. `1-wordcount.ts` — count into a Map
 - [ ] 2. `2-topn.ts` — rank by count desc, name asc
 - [ ] 3. `3-prefixkeys.ts` — prefix filter + sort
 - [ ] 4. `4-safeget.ts` — undefined → default
 - [ ] 5. `5-isalive.ts` — TTL window
 - [ ] 6. `6-clonestate.ts` — deep clone nested Map
 - [ ] 7. `7-counter.ts` — stateful class + ranking
-- [ ] **`make skill` reports all 7 green**
+- [ ] 8. `8-generics.ts` — generics: `<T>`, `<K>`, generic over `Map`
+- [ ] 9. `9-optresult.ts` — `Option<T>` / `Result<T,E>` tagged unions
+- [ ] **`make skill` reports all 9 green**
 
 ## E. Simulations (do AFTER skills) — `practice/sims/`
 

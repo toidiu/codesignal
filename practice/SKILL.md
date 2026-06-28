@@ -22,8 +22,10 @@ Work top to bottom — they escalate and mirror the real-test mechanics.
 | 5 | `5-isalive.ts` | TTL window math | every level 3 |
 | 6 | `6-clonestate.ts` | deep clone nested Map | every level 4 |
 | 7 | `7-counter.ts` | stateful class + ranking | the sim skeleton |
+| 8 | `8-generics.ts` | generics: `<T>`, `<K>`, generic over `Map` | aggregation helpers |
+| 9 | `9-optresult.ts` | `Option<T>` / `Result<T,E>` tagged unions (Rust-style) | error/optional handling |
 
-When `make skill` reports all 7 passing, you've touched every core mechanic. Then start `sims/sim1`.
+When `make skill` reports all 9 passing, you've touched every core mechanic. Then start `sims/sim1`.
 
 ## Stretch (optional)
 

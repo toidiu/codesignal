@@ -18,6 +18,22 @@ m.forEach((v, k) => { });            // CAREFUL: value FIRST, key second
 const n = m.get('x') ?? 0;           // default when missing
 ```
 
+`get-or-create` — insert a default when absent, then mutate it (the `entry().or_insert_with()` move):
+
+```ts
+// inline, for a counter:  bump count for k
+m.set(k, (m.get(k) ?? 0) + 1);
+
+// helper, when the value is a container you then mutate:
+function getOrCreate<K, V>(m: Map<K, V>, k: K, make: () => V): V {
+  let v = m.get(k);
+  if (v === undefined) { v = make(); m.set(k, v); }
+  return v;
+}
+getOrCreate(buckets, k, () => [] as string[]).push(item);   // append into per-key array
+// NOTE: make() must RETURN the value — `() => 0`, not `() => {0}` (a block returns void).
+```
+
 ## Set
 
 ```ts

@@ -24,6 +24,15 @@ function getOrCreate<K, V>(m: Map<K, V>, k: K, def: () => V): V {
   return m.get(k)!;
 }
 
+// gen
+function getOrCreate1<K, V>(map: Map<K, V>, k: K, def: () => V): V {
+  if (!map.has(k)) {
+    map.set(k, def());
+  }
+
+  return map.get(k)!;
+}
+
 test('wordCount counts occurrences', () => {
   const c = wordCount(['a', 'b', 'a', 'a', 'b']);
   assert.strictEqual(c.get('a'), 3);
