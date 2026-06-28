@@ -11,39 +11,24 @@ Graded on passing tests fast, not code quality — so favor plain, correct, fast
 
 ### `Map` (≈ Rust `HashMap`)
 
-- [ ] set / overwrite a value  
-  `m.set(k, v)`
-- [ ] get a value — `undefined` if absent  
-  `m.get(k)`
-- [ ] check membership  
-  `m.has(k)`
-- [ ] remove — returns `boolean`  
-  `m.delete(k)`
-- [ ] number of entries  
-  `m.size`
-- [ ] iterate entries  
-  `for (const [k, v] of m) { }`
-- [ ] all keys  
-  `[...m.keys()]`
-- [ ] all values  
-  `[...m.values()]`
-- [ ] all entries  
-  `[...m.entries()]`
-- [ ] default when missing  
-  `m.get(k) ?? fallback`
+- [ ] set / overwrite a value: `m.set(k, v)`
+- [ ] get a value, `undefined` if absent: `m.get(k)`
+- [ ] check membership: `m.has(k)`
+- [ ] remove, returns `boolean`: `m.delete(k)`
+- [ ] number of entries: `m.size`
+- [ ] iterate entries: `for (const [k, v] of m) { }`
+- [ ] all keys: `[...m.keys()]`
+- [ ] all values: `[...m.values()]`
+- [ ] all entries: `[...m.entries()]`
+- [ ] default when missing: `m.get(k) ?? fallback`
 
 ### `Set` (≈ Rust `HashSet`)
 
-- [ ] add  
-  `s.add(x)`
-- [ ] check membership  
-  `s.has(x)`
-- [ ] remove  
-  `s.delete(x)`
-- [ ] size  
-  `s.size`
-- [ ] to array  
-  `[...s]`
+- [ ] add: `s.add(x)`
+- [ ] check membership: `s.has(x)`
+- [ ] remove: `s.delete(x)`
+- [ ] size: `s.size`
+- [ ] to array: `[...s]`
 
 ### Objects / nested maps as records
 
@@ -52,52 +37,35 @@ Graded on passing tests fast, not code quality — so favor plain, correct, fast
 
 ### Array methods
 
-- [ ] transform each element  
-  `arr.map(x => ...)`
-- [ ] keep matching elements  
-  `arr.filter(x => ...)`
-- [ ] fold to one value  
-  `arr.reduce((acc, x) => ..., init)`
-- [ ] search for one element  
-  `arr.find(x => ...)`
-- [ ] any / all match  
-  `arr.some(...)` · `arr.every(...)`
-- [ ] first n, non-mutating  
-  `arr.slice(0, n)`
+- [ ] transform each element: `arr.map(x => ...)`
+- [ ] keep matching elements: `arr.filter(x => ...)`
+- [ ] fold to one value: `arr.reduce((acc, x) => ..., init)`
+- [ ] search for one element: `arr.find(x => ...)`
+- [ ] any / all match: `arr.some(...)` · `arr.every(...)`
+- [ ] first n, non-mutating: `arr.slice(0, n)`
 
 ### Sorting
 
-- [ ] numeric ascending (never bare `sort()`)  
-  `arr.sort((a, b) => a - b)`
-- [ ] descending  
-  `arr.sort((a, b) => b - a)`
-- [ ] with tiebreaker  
-  `(a, b) => b.n - a.n || a.name.localeCompare(b.name)`
+- [ ] numeric ascending (never bare `sort()`): `arr.sort((a, b) => a - b)`
+- [ ] descending: `arr.sort((a, b) => b - a)`
+- [ ] with tiebreaker: `(a, b) => b.n - a.n || a.name.localeCompare(b.name)`
 
 ### Top-N rankings
 
-- [ ] sort, then take the first n  
-  `sorted.slice(0, n)`
+- [ ] sort, then take the first n: `sorted.slice(0, n)`
 
 ### Strings
 
-- [ ] split into parts  
-  `s.split('/')`
-- [ ] prefix match  
-  `s.startsWith('pre')`
-- [ ] contains  
-  `s.includes('x')`
-- [ ] build an output string  
-  `` `${k}(${v})` ``
-- [ ] compare for sort tiebreaks  
-  `a.localeCompare(b)`
+- [ ] split into parts: `s.split('/')`
+- [ ] prefix match: `s.startsWith('pre')`
+- [ ] contains: `s.includes('x')`
+- [ ] build an output string: `` `${k}(${v})` ``
+- [ ] compare for sort tiebreaks: `a.localeCompare(b)`
 
 ### null / undefined handling
 
-- [ ] optional chaining  
-  `a?.b?.c`
-- [ ] nullish coalescing  
-  `value ?? fallback`
+- [ ] optional chaining: `a?.b?.c`
+- [ ] nullish coalescing: `value ?? fallback`
 - [ ] treat every `.get` as `T | undefined`
 
 ### Timestamps / TTL math
@@ -106,10 +74,8 @@ Graded on passing tests fast, not code quality — so favor plain, correct, fast
 
 ### Deep clone for snapshots
 
-- [ ] deep clone one value  
-  `structuredClone(x)`
-- [ ] clone a nested map  
-  `new Map([...m].map(([k, v]) => [k, new Map(v)]))`
+- [ ] deep clone one value: `structuredClone(x)`
+- [ ] clone a nested map: `new Map([...m].map(([k, v]) => [k, new Map(v)]))`
 
 ### Class holding state
 
@@ -117,18 +83,14 @@ Graded on passing tests fast, not code quality — so favor plain, correct, fast
 
 ### Generics
 
-- [ ] generic function with one type param  
-  `function id<T>(x: T): T`
-- [ ] second type param + callback  
-  `function groupBy<T, K>(xs: T[], key: (x: T) => K): Map<K, T[]>`
-- [ ] generic returning `T | undefined`  
-  `function maxBy<T>(xs: T[], score: (x: T) => number): T | undefined`
+- [ ] generic function with one type param: `function id<T>(x: T): T`
+- [ ] second type param + callback: `function groupBy<T, K>(xs: T[], key: (x: T) => K): Map<K, T[]>`
+- [ ] generic returning `T | undefined`: `function maxBy<T>(xs: T[], score: (x: T) => number): T | undefined`
 
 ### Option / Result (Rust-style tagged unions)
 
-- [ ] model with a discriminated union  
-  `type Option<T> = { kind: 'some'; value: T } | { kind: 'none' }`  
-  `type Result<T, E> = { kind: 'ok'; value: T } | { kind: 'err'; error: E }`
+- [ ] model Option with a discriminated union: `type Option<T> = { kind: 'some'; value: T } | { kind: 'none' }`
+- [ ] model Result with a discriminated union: `type Result<T, E> = { kind: 'ok'; value: T } | { kind: 'err'; error: E }`
 - [ ] narrow on the `kind` tag, e.g. `unwrapOr`
 
 ### async (only if the spec is async)
@@ -137,14 +99,11 @@ Graded on passing tests fast, not code quality — so favor plain, correct, fast
 
 ## B. TS traps to internalize (Rust-dev edition)
 
-- [ ] bare `sort()` sorts numbers as strings — always pass a comparator  
-  `arr.sort((a, b) => a - b)`
-- [ ] `forEach` passes **value first**, then key  
-  `m.forEach((value, key) => ...)`
+- [ ] bare `sort()` sorts numbers as strings — always pass a comparator: `arr.sort((a, b) => a - b)`
+- [ ] `forEach` passes **value first**, then key: `m.forEach((value, key) => ...)`
 - [ ] `typeof null` and `typeof []` are both `'object'` — use `Array.isArray`
 - [ ] use `===` only; objects compare by **identity**, not value
-- [ ] composite keys: serialize to a string  
-  `` `${x},${y}` ``
+- [ ] composite keys: serialize to a string: `` `${x},${y}` ``
 - [ ] integer math needs `Math.floor` (all numbers are floats)
 - [ ] don't mix `Map.get(k)` with object `obj[k]`
 
@@ -160,18 +119,26 @@ Graded on passing tests fast, not code quality — so favor plain, correct, fast
 
 ## D. Skill drills (do FIRST) — `practice/skill/`
 
-Run all: `make skill`  ·  one at a time: `make skill1` … `make skill9`
+Run all: `make skill`  ·  one at a time: `make skill1` … `make skill17`
 
 - [x] 1. `1-wordcount.ts` — count into a Map
 - [x] 2. `2-topn.ts` — rank by count desc, name asc
 - [x] 3. `3-prefixkeys.ts` — prefix filter + sort
 - [x] 4. `4-safeget.ts` — undefined → default
-- [ ] 5. `5-isalive.ts` — TTL window
-- [ ] 6. `6-clonestate.ts` — deep clone nested Map
-- [ ] 7. `7-counter.ts` — stateful class + ranking
+- [x] 5. `5-isalive.ts` — TTL window
+- [x] 6. `6-clonestate.ts` — deep clone nested Map
+- [x] 7. `7-counter.ts` — stateful class + ranking
 - [ ] 8. `8-generics.ts` — generics: `<T>`, `<K>`, generic over `Map`
 - [ ] 9. `9-optresult.ts` — `Option<T>` / `Result<T,E>` tagged unions
-- [ ] **`make skill` reports all 9 green**
+- [ ] 10. `10-strings.ts` — split / prefix / `localeCompare` / `"k(v)"` output
+- [ ] 11. `11-arrays.ts` — map/filter/reduce/find + non-mutating sort
+- [ ] 12. `12-records.ts` — nested-map records, create-if-missing
+- [ ] 13. `13-regex.ts` — test / match / replace / capture groups
+- [ ] 14. `14-dates.ts` — `Date` + epoch millis, ttl boundary
+- [ ] 15. `15-json.ts` — `JSON` stringify/parse, clone, composite keys
+- [ ] 16. `16-controlflow.ts` — try / catch / throw + custom `Error`
+- [ ] 17. `17-classextends.ts` — `extends` / `super` / override
+- [ ] **`make skill` reports all 17 green**
 
 ## E. Simulations (do AFTER skills) — `practice/sims/`
 

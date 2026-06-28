@@ -3,6 +3,13 @@
 Living doc — add to it as you hit things. Mental model: **structural typing** (shape matches = assignable),
 all numbers are floats, `===` only, `map.get(missing)` returns `undefined` (not a panic).
 
+## References
+
+- **MDN** — runtime API (`Map`/`Set`/`Array`/`String`), your `std` docs. <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects>
+  - Deep-links per method; search via `mdn array reduce`, `mdn map.get`, etc.
+- **TS cheatsheets** — official one-page visuals (types, generics). <https://www.typescriptlang.org/cheatsheets>
+- **TS Playground** — paste code, hover for inferred types, see errors live ("does this typecheck?"). <https://www.typescriptlang.org/play>
+
 ## Map — your HashMap
 
 ```ts

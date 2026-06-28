@@ -24,8 +24,16 @@ Work top to bottom — they escalate and mirror the real-test mechanics.
 | 7 | `7-counter.ts` | stateful class + ranking | the sim skeleton |
 | 8 | `8-generics.ts` | generics: `<T>`, `<K>`, generic over `Map` | aggregation helpers |
 | 9 | `9-optresult.ts` | `Option<T>` / `Result<T,E>` tagged unions (Rust-style) | error/optional handling |
+| 10 | `10-strings.ts` | split / prefix / `localeCompare` / `"k(v)"` output | every level 2 |
+| 11 | `11-arrays.ts` | map/filter/reduce/find + non-mutating sort | every level |
+| 12 | `12-records.ts` | nested-map records, create-if-missing | the sim skeleton |
+| 13 | `13-regex.ts` | regex: test / match / replace / capture groups | parsing inputs |
+| 14 | `14-dates.ts` | `Date` + epoch millis, ttl boundary | every level 3 |
+| 15 | `15-json.ts` | `JSON` stringify/parse, clone, composite keys | level 4 / keys |
+| 16 | `16-controlflow.ts` | try / catch / throw + custom `Error` | error handling |
+| 17 | `17-classextends.ts` | `extends` / `super` / override | modeling entities |
 
-When `make skill` reports all 9 passing, you've touched every core mechanic. Then start `sims/sim1`.
+When `make skill` reports all 17 passing, you've touched every core mechanic. Then start `sims/sim1`.
 
 ## Stretch (optional)
 
