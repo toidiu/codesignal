@@ -5,7 +5,18 @@ import { test, run, assert } from '../_harness';
 // A record set at `setAt` with `ttl` is alive at `now` iff: setAt <= now < setAt + ttl.
 // If ttl is undefined, it never expires.
 export function isAlive(setAt: number, now: number, ttl?: number): boolean {
-  throw new Error('TODO: isAlive');
+  if (ttl === undefined) {
+    // never expire
+    return true;
+  }
+
+  const end = setAt + ttl;
+  // setAt <= now <= setAt + ttl
+  if ((setAt <= now) && (now < end)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 test('isAlive respects the ttl window', () => {
