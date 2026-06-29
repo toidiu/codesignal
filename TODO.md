@@ -142,7 +142,7 @@ Run all: `make skill`  ·  one at a time: `make skill1` … `make skill17`
 
 ## E. Simulations (do AFTER skills) — `practice/sims/`
 
-Run: `make sim1` (sim2..4 once their tests are wired)
+Run: `make sim1` … `make sim4` (all wired). Each sim is split into `level1.ts … level4.ts`; the spec for a level is the comment at the top of its file.
 
 ### Sim 1 — KV store (tests ready)
 - [ ] L1 set/get/delete
@@ -150,19 +150,19 @@ Run: `make sim1` (sim2..4 once their tests are wired)
 - [ ] L3 timestamps + TTL
 - [ ] L4 backup/restore
 
-### Sim 2 — Banking (spec ready; ask me to wire up tests)
+### Sim 2 — Banking (tests wired: `make sim2`)
 - [ ] L1 accounts/deposit/transfer
 - [ ] L2 topSpenders
 - [ ] L3 scheduled payments + cashback
 - [ ] L4 merge + balance history
 
-### Sim 3 — Cloud file storage (spec ready; ask me to wire up tests)
+### Sim 3 — Cloud file storage (tests wired: `make sim3`)
 - [ ] L1 add/get/delete file
 - [ ] L2 nLargest by prefix
 - [ ] L3 users + capacity
 - [ ] L4 backup/restore per user
 
-### Sim 4 — Record database (spec ready; ask me to wire up tests)
+### Sim 4 — Record database (tests wired: `make sim4`)
 - [ ] L1 set/get/delete field
 - [ ] L2 scan field / by value
 - [ ] L3 field TTL

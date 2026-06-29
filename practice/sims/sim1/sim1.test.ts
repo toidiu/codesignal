@@ -1,5 +1,9 @@
 import { test, run, assert } from '../../_harness';
-import { KVStore } from './solution';
+// Imports the full level chain (level4 extends level3 … extends level1).
+// Implement level1.ts first: the L1 tests pass while later levels still throw
+// TODO at runtime. Work one level file at a time — you never need to open the
+// next level's file to pass the level you're on.
+import { KVStore } from './level4';
 
 // ---------------- Level 1 ----------------
 test('L1: set / get / delete', () => {

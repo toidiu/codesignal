@@ -7,7 +7,9 @@ TypeScript only, with a tiny built-in test runner (no jest/vitest).
 
 1. **Skills first** — `SKILL.md`. Implement each file in `skill/` until `make skill` is all green.
 2. **Cheatsheet** — keep `CHEATSHEET.md` open while you work; add to it as you learn.
-3. **Sims** — `sims/sim1..4`. Implement the stub `solution.ts` to make each level's tests pass.
+3. **Sims** — `sims/sim1..4`. Each sim is split into `level1.ts … level4.ts` (the
+   spec for that level lives at the top of the file). Implement them in order to make
+   each level's tests pass; the test imports `level4`, which extends the chain down to `level1`.
 4. **Track everything** in `../todo.md`.
 
 ## Running tests (via make)
