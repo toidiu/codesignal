@@ -182,6 +182,39 @@ if (v === undefined) { }
 const got = m.get(k); if (got === undefined) return null;
 ```
 
+## `switch` + discriminated unions (your `match` on enums)
+
+No pattern matching. `switch` compares a **value** with `===`, not a shape. Switch on the discriminant tag (`o.kind`), not the object.
+
+```ts
+type Option<T> = { kind: 'some'; value: T } | { kind: 'none' };
+
+function unwrapOr<T>(o: Option<T>, fallback: T): T {
+  switch (o.kind) {
+    // TS narrows o to { kind: 'some'; value: T } here
+    case 'some':
+      return o.value;
+    case 'none':
+      return fallback;
+  }
+}
+```
+
+- Switch on a single value (`o.kind`), never a destructured shape — `case { ... } =>` is Rust, not TS.
+- Inside a `case`, TS **narrows** the union to that variant, so `o.value` is typed.
+- `return` exits; without `return`/`break` cases **fall through** to the next.
+- Each variant returning makes TS see the function as exhaustive.
+- For two variants an `if` is often clearer: `if (o.kind === 'some') return o.value; return fallback;`
+
+Exhaustiveness check — make TS error when a new variant is added:
+
+```ts
+default: {
+  const _exhaustive: never = o;
+  return _exhaustive;
+}
+```
+
 ## Composite keys — no struct equality
 
 Objects compare by identity, not value. To key a Map by a pair, serialize it:

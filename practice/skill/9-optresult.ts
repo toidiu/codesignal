@@ -8,26 +8,38 @@ export type Result<T, E> = { kind: 'ok'; value: T } | { kind: 'err'; error: E };
 
 // Constructors
 export function some<T>(value: T): Option<T> {
-  throw new Error('TODO: some');
+  return { kind: "some", value: value };
 }
 export function none<T>(): Option<T> {
-  throw new Error('TODO: none');
+  return { kind: "none" };
 }
 export function ok<T, E>(value: T): Result<T, E> {
-  throw new Error('TODO: ok');
+  return { kind: "ok", value: value };
 }
 export function err<T, E>(error: E): Result<T, E> {
-  throw new Error('TODO: err');
+  return { kind: "err", error: error };
 }
 
 // unwrapOr: the inner value if Some, else the fallback. Narrow on o.kind.
 export function unwrapOr<T>(o: Option<T>, fallback: T): T {
-  throw new Error('TODO: unwrapOr');
+  switch (o.kind) {
+    case "some": return o.value;
+    case "none": return fallback;
+    default: {
+      let a: never = o;
+      return a;
+    }
+  }
 }
 
 // parseIntResult: Ok(n) on a valid integer, else Err(message). Result in action.
 export function parseIntResult(s: string): Result<number, string> {
-  throw new Error('TODO: parseIntResult');
+  const n = Number(s);
+  if (Number.isInteger(n)) {
+    return ok(n);
+  } else {
+    return err("unable to parse int");
+  }
 }
 
 test('some / none / unwrapOr', () => {

@@ -89,9 +89,9 @@ Graded on passing tests fast, not code quality — so favor plain, correct, fast
 
 ### Option / Result (Rust-style tagged unions)
 
-- [ ] model Option with a discriminated union: `type Option<T> = { kind: 'some'; value: T } | { kind: 'none' }`
-- [ ] model Result with a discriminated union: `type Result<T, E> = { kind: 'ok'; value: T } | { kind: 'err'; error: E }`
-- [ ] narrow on the `kind` tag, e.g. `unwrapOr`
+- [x] model Option with a discriminated union: `type Option<T> = { kind: 'some'; value: T } | { kind: 'none' }`
+- [x] model Result with a discriminated union: `type Result<T, E> = { kind: 'ok'; value: T } | { kind: 'err'; error: E }`
+- [x] narrow on the `kind` tag, e.g. `unwrapOr`
 
 ### async (only if the spec is async)
 
