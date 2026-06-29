@@ -8,17 +8,35 @@ export class Records {
 
   // set(id, field, value): upsert. Create the inner Map for `id` if absent, then set the field.
   set(id: string, field: string, value: string): void {
-    throw new Error('TODO: Records.set');
+    // check if exists
+    let inner = this.data.get(id);
+
+    if (inner === undefined) {
+      // insert default
+      this.data.set(id, new Map());
+    }
+
+    // insert value
+    this.data.get(id)!.set(field, value);
   }
 
   // get(id, field): the value, or undefined if the entity or field is missing.
   get(id: string, field: string): string | undefined {
-    throw new Error('TODO: Records.get');
+    return this.data.get(id)?.get(field);
   }
 
   // fields(id): an entity's field names, sorted ASC; [] if the entity is unknown.
   fields(id: string): string[] {
-    throw new Error('TODO: Records.fields');
+    let inner = this.data.get(id);
+
+    if (inner === undefined) {
+      return [];
+    }
+
+    let keys: string[] = [...inner.keys()];
+    keys = keys.sort((a, b) => a.localeCompare(b));
+
+    return keys;
   }
 }
 
