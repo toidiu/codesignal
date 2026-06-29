@@ -271,6 +271,38 @@ assert.throws(() => f());
 - Skip the non-strict `equal` / `deepEqual`. They use coercing `==` (`1 == '1'`). Always go strict.
 - `deepStrictEqual` also checks type (array ≠ object) and treats `NaN === NaN` as equal.
 
+## Rust → TS: where the compiler WON'T save you
+
+Coming from Rust, the type is a spec the compiler enforces. In TS, types are a layer bolted onto JS — many lib slots are typed **wide** (`unknown` / `void`-accepting), so a wrong value still fits and **typechecks clean**. These are the spots to eyeball, because tsc won't flag them.
+
+```ts
+// filter/map/find predicate is typed `=> unknown`, NOT `=> boolean`.
+// a block body with no `return` yields void -> falsy -> keeps NOTHING.
+arr.filter(x => { x.ok });
+// FIX: concise body forces the return
+arr.filter(x => x.ok);
+
+// runtime predicates take `unknown` — pass the WRONG var and it still compiles
+// always false: s is a string, never an integer
+Number.isInteger(s);
+// meant the parsed number
+Number.isInteger(n);
+
+// parseInt is lenient + returns NaN (never undefined) on failure
+// 42  (stops at first bad char)
+parseInt('42abc');
+// NaN (strict) — prefer for validation
+Number('42abc');
+```
+
+The pattern is always the same: **a slot typed wide enough that your mistake fits.** In Rust these barely exist; in TS they cluster wherever the API meets old JS semantics.
+
+Compensate (the compiler won't):
+
+- **Concise arrow bodies** — `=> expr`, no braces. Closest thing to Rust's "last expression is the return." Braces are what let `undefined` leak out.
+- **ESLint is your missing `-> bool`** — `array-callback-return`, `no-floating-promises`, `@typescript-eslint/strict-boolean-expressions`. Lint re-adds constraints Rust bakes into types.
+- **All numbers are `f64`.** No `Float` type, no `isFloat()`. Ask "is it whole?" with `Number.isInteger(n)`.
+
 ## Gotchas list
 
 - `sort()` without comparator stringifies.
