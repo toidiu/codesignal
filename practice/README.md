@@ -17,8 +17,13 @@ TypeScript only, with a tiny built-in test runner (no jest/vitest).
 ```bash
 make skill      # run ALL skill drills, report passing/failing per skill
 make skill3     # run a single skill drill
-make sim1       # run a simulation's tests (sim2..4 once wired)
+make psim1      # run a simpler WARM-UP sim (practice_sim1..2) to learn the levels idea
+make sim1       # run a real practice-run simulation's tests (sim1..4)
 ```
+
+Warm-up sims (`practice_sim1` Inventory, `practice_sim2` Page Views) are gentler and
+exist to get comfortable with levels building on each other. Do these before the real
+`sim1..4`.
 
 Or directly, without make:
 

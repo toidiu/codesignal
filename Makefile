@@ -16,6 +16,7 @@ help:
 	@echo "  skill      Run ALL skill drills; report passing/failing per skill"
 	@echo "  skill1..7  Run a single skill drill"
 	@echo "  sim1..4    Run a single simulation's tests"
+	@echo "  psim1..2   Run a simpler warm-up sim (practice levels)"
 
 install:
 	npm install
@@ -53,4 +54,12 @@ sim%:
 		$(TSNODE) practice/sims/sim$*/sim$*.test.ts; \
 	else \
 		echo "sim$* not wired yet — ask Claude to wire up sim$* tests"; \
+	fi
+
+# `make psim1` runs a simpler warm-up sim (practice_sim1) for rehearsing levels.
+psim%:
+	@if [ -f practice/sims/practice_sim$*/practice_sim$*.test.ts ]; then \
+		$(TSNODE) practice/sims/practice_sim$*/practice_sim$*.test.ts; \
+	else \
+		echo "practice_sim$* not found"; \
 	fi
