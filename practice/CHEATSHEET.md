@@ -2,6 +2,8 @@
 - add reduce contract
 - add regex
 - add json
+- extend class, super
+- interface
 
 # TS Cheatsheet (Rust-dev edition)
 

@@ -7,15 +7,15 @@ export class Account {
   protected balance: number;
 
   constructor(initial: number) {
-    throw new Error('TODO: Account constructor'); // set this.balance
+    this.balance = initial;
   }
 
   deposit(amount: number): void {
-    throw new Error('TODO: Account.deposit');
+    this.balance += amount;
   }
 
   describe(): string {
-    throw new Error('TODO: Account.describe'); // `balance=${this.balance}`
+    return `balance=${this.balance}`;
   }
 }
 
@@ -24,17 +24,22 @@ export class Savings extends Account {
   private rate: number;
 
   constructor(initial: number, rate: number) {
-    throw new Error('TODO: Savings constructor'); // super(initial) then this.rate = rate
+    super(initial);
+    this.rate = rate;
   }
 
   // addInterest: deposit balance * rate (reuse the inherited deposit()).
   addInterest(): void {
-    throw new Error('TODO: Savings.addInterest');
+    this.balance = this.balance + this.balance * this.rate;
   }
 
   // override: base describe() plus ` rate=${rate}` (call super.describe()).
   describe(): string {
-    throw new Error('TODO: Savings.describe');
+    let ret = super.describe() + ` rate=${this.rate}`;
+
+    console.log(ret);
+
+    return ret;
   }
 }
 
