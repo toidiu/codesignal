@@ -5,25 +5,36 @@ import { test, run, assert } from '../_harness';
 // sumPositive: total of only the positive numbers (filter then reduce).
 //   sumPositive([1, -2, 3]) -> 4
 export function sumPositive(nums: number[]): number {
-  throw new Error('TODO: sumPositive');
+  return nums
+    .filter((a) => a > 0)
+    .reduce((acc, x) => acc + x, 0);
 }
 
 // pluckIds: the `id` of each item (map).
 //   pluckIds([{id:1,name:'a'},{id:2,name:'b'}]) -> [1, 2]
 export function pluckIds(items: { id: number; name: string }[]): number[] {
-  throw new Error('TODO: pluckIds');
+  return items.map(({id, name}) => id);
 }
 
 // firstOver: first number strictly greater than `limit`, or undefined (find).
 //   firstOver([1, 5, 9], 4) -> 5
 export function firstOver(nums: number[], limit: number): number | undefined {
-  throw new Error('TODO: firstOver');
+  let ret = nums.find((a) => a > limit);
+
+  return ret;
 }
 
 // nLargest: the n largest numbers, descending — WITHOUT mutating the input.
 //   nLargest([3, 1, 2, 5], 2) -> [5, 3]
 export function nLargest(nums: number[], n: number): number[] {
-  throw new Error('TODO: nLargest');
+  // no mutataion
+  let ret = [...nums]
+    // desc
+    .sort((a, b) => b - a)
+    // n numbers
+    .slice(0, n);
+
+  return ret;
 }
 
 test('sumPositive folds only positives', () => {

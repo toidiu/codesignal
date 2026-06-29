@@ -248,6 +248,29 @@ new Map(oldMap);
 const copy = new Map([...m].map(([k, inner]) => [k, new Map(inner)]));
 ```
 
+**Shallow vs deep — when does it matter?**
+
+`new Map(m)`, `[...arr]`, and `{ ...obj }` are all SHALLOW: they copy the
+container, but values are copied BY REFERENCE. Reassigning a key/index in the
+copy is safe; mutating a value object leaks into the original.
+
+```ts
+// values are PRIMITIVES -> shallow is enough
+const copy = new Map(m);
+copy.set('a', 99);        // ✓ original unchanged
+
+// values are OBJECTS/arrays/Maps -> shared, mutating leaks
+const copy2 = new Map(orig);
+copy2.get('user').name = 'X';   // ⚠️ also changes orig.get('user')
+copy2.get('nums').push(4);      // ⚠️ also changes orig's array
+```
+
+- Rule: shallow is fine for **primitive values**; deep-clone when values are
+  **mutable references** you intend to change.
+- `structuredClone(x)` is the easy deep clone — but it drops functions and `undefined`.
+- This is the sim backup/restore trap: snapshot with a deep clone, or a later
+  mutation rewrites your "saved" state.
+
 ## TTL / timestamps (Level 3 pattern)
 
 ```ts

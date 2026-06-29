@@ -26,13 +26,13 @@ export function pathHead(path: string): string {
 //   keysWithPrefix(Map{'app/x':1,'db/y':1,'app/z':1}, 'app/') -> ['app/x','app/z']
 export function keysWithPrefix(m: Map<string, number>, prefix: string): string[] {
   const keys = m.keys();
-  console.log(keys);
+  // console.log(keys);
 
   let ret = [...keys]
   .filter((a) =>
     a.startsWith(prefix)
   );
-  console.log(ret);
+  // console.log(ret);
 
   ret = ret.sort((a, b) =>
     a.localeCompare(b)
