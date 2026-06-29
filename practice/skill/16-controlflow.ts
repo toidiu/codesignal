@@ -5,19 +5,35 @@ import { test, run, assert } from '../_harness';
 // A custom error type. `extends Error`; set `name` so `instanceof` and `.name` work.
 export class NotFoundError extends Error {
   constructor(key: string) {
-    throw new Error('TODO: NotFoundError constructor'); // super(...) + this.name = 'NotFoundError'
+    super(`key not found ${key}`);
+    this.name = "NotFoundError";
+    // throw new Error('TODO: NotFoundError constructor'); // super(...) + this.name = 'NotFoundError'
   }
 }
 
 // requireKey: return the value or THROW NotFoundError if the key is absent.
 export function requireKey(m: Map<string, number>, k: string): number {
-  throw new Error('TODO: requireKey');
+  let ret = m.get(k)!;
+
+  if (ret === undefined) {
+    throw new NotFoundError("not found");
+  }
+
+  return ret;
 }
 
 // safeRequire: call requireKey, but CATCH NotFoundError and return `fallback` instead.
 //   any other error should propagate (re-throw).
 export function safeRequire(m: Map<string, number>, k: string, fallback: number): number {
-  throw new Error('TODO: safeRequire');
+  try {
+    return requireKey(m, k);
+  } catch (e) {
+    if (e instanceof NotFoundError) {
+      return fallback;
+    } else {
+      throw e;
+    }
+  }
 }
 
 test('requireKey throws NotFoundError when missing', () => {
