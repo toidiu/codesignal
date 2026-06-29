@@ -5,19 +5,25 @@ import { test, run, assert } from '../_harness';
 // clone: deep clone a plain JSON-safe value via stringify→parse.
 //   (cheaper-but-limited cousin of structuredClone; loses Maps/undefined/functions)
 export function clone<T>(value: T): T {
-  throw new Error('TODO: clone');
+  const json = JSON.stringify(value);
+  return JSON.parse(json);
+  // return structuredClone(value);
 }
 
 // pairKey: a stable string key for a [x, y] pair via JSON (composite-key pattern).
 //   pairKey(1, 2) -> '[1,2]'
 export function pairKey(x: number, y: number): string {
-  throw new Error('TODO: pairKey');
+  return JSON.stringify([x, y]);
 }
 
 // tryParse: parse JSON, returning undefined instead of throwing on bad input.
 //   tryParse('{"a":1}') -> {a:1} ; tryParse('nope') -> undefined
 export function tryParse(s: string): unknown {
-  throw new Error('TODO: tryParse');
+  try {
+    return JSON.parse(s);
+  } catch {
+    return undefined;
+  }
 }
 
 test('clone is a deep, independent copy', () => {
