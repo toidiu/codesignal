@@ -8,19 +8,28 @@ import { test, run, assert } from '../_harness';
 // epochMillis: parse an ISO date-time string to milliseconds since the Unix epoch.
 //   epochMillis('1970-01-01T00:00:01Z') -> 1000
 export function epochMillis(iso: string): number {
-  throw new Error('TODO: epochMillis');
+  return Date.parse(iso);
 }
 
 // addSeconds: ISO string `secs` seconds later, back as an ISO string (UTC, ...Z).
 //   addSeconds('1970-01-01T00:00:00Z', 90) -> '1970-01-01T00:01:30.000Z'
 export function addSeconds(iso: string, secs: number): string {
-  throw new Error('TODO: addSeconds');
+  let date = Date.parse(iso);
+
+  let datePlus = new Date(date + (secs * 1000))
+  let dates = datePlus.toISOString();
+
+  return dates;
 }
 
 // isExpired: true iff `now` (millis) is at or past setAt + ttlSecs*1000.
 //   isExpired(0, 10, 9000) -> false ; isExpired(0, 10, 10000) -> true
 export function isExpired(setAtMs: number, ttlSecs: number, nowMs: number): boolean {
-  throw new Error('TODO: isExpired');
+  if (nowMs >= setAtMs + (ttlSecs * 1000)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 test('epochMillis parses ISO to millis', () => {
