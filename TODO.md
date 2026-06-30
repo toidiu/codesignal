@@ -119,7 +119,7 @@ Graded on passing tests fast, not code quality — so favor plain, correct, fast
 
 ## D. Skill drills (do FIRST) — `practice/skill/`
 
-Run all: `make skill`  ·  one at a time: `make skill1` … `make skill17`
+Run all: `make skill`  ·  one at a time: `make skill1` … `make skill22`
 
 - [x] 1. `1-wordcount.ts` — count into a Map
 - [x] 2. `2-topn.ts` — rank by count desc, name asc
@@ -129,16 +129,23 @@ Run all: `make skill`  ·  one at a time: `make skill1` … `make skill17`
 - [x] 6. `6-clonestate.ts` — deep clone nested Map
 - [x] 7. `7-counter.ts` — stateful class + ranking
 - [x] 8. `8-generics.ts` — generics: `<T>`, `<K>`, generic over `Map`
-- [ ] 9. `9-optresult.ts` — `Option<T>` / `Result<T,E>` tagged unions
-- [ ] 10. `10-strings.ts` — split / prefix / `localeCompare` / `"k(v)"` output
-- [ ] 11. `11-arrays.ts` — map/filter/reduce/find + non-mutating sort
-- [ ] 12. `12-records.ts` — nested-map records, create-if-missing
-- [ ] 13. `13-regex.ts` — test / match / replace / capture groups
-- [ ] 14. `14-dates.ts` — `Date` + epoch millis, ttl boundary
-- [ ] 15. `15-json.ts` — `JSON` stringify/parse, clone, composite keys
-- [ ] 16. `16-controlflow.ts` — try / catch / throw + custom `Error`
-- [ ] 17. `17-classextends.ts` — `extends` / `super` / override
-- [ ] **`make skill` reports all 17 green**
+- [x] 9. `9-optresult.ts` — `Option<T>` / `Result<T,E>` tagged unions
+- [x] 10. `10-strings.ts` — split / prefix / `localeCompare` / `"k(v)"` output
+- [x] 11. `11-arrays.ts` — map/filter/reduce/find + non-mutating sort
+- [x] 12. `12-records.ts` — nested-map records, create-if-missing
+- [x] 13. `13-regex.ts` — test / match / replace / capture groups
+- [x] 14. `14-dates.ts` — `Date` + epoch millis, ttl boundary
+- [x] 15. `15-json.ts` — `JSON` stringify/parse, clone, composite keys
+- [x] 16. `16-controlflow.ts` — try / catch / throw + custom `Error`
+- [x] 17. `17-classextends.ts` — `extends` / `super` / override
+- [ ] 18. `18-linkedlist.ts` — build / reverse / fast-slow middle
+- [ ] 19. `19-heap.ts` — min-heap push/pop/peek + top-K
+- [ ] 20. `20-queue.ts` — FIFO queue (head index) + BFS
+- [ ] 21. `21-interfaces.ts` — `interface` / `implements` / structural typing
+- [ ] 22. `22-binarysearch.ts` — array search / lower-bound / on the answer
+- [ ] 23. `23-backtracking.ts` — DFS+undo: subsets / permutations / combinations
+- [ ] 24. `24-twopointer.ts` — converging ends + slow/fast on sorted data
+- [ ] **`make skill` reports all 24 green**
 
 ## E. Simulations (do AFTER skills) — `practice/sims/`
 

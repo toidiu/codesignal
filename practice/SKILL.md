@@ -32,8 +32,15 @@ Work top to bottom — they escalate and mirror the real-test mechanics.
 | 15 | `15-json.ts` | `JSON` stringify/parse, clone, composite keys | level 4 / keys |
 | 16 | `16-controlflow.ts` | try / catch / throw + custom `Error` | error handling |
 | 17 | `17-classextends.ts` | `extends` / `super` / override | modeling entities |
+| 18 | `18-linkedlist.ts` | linked list: build / reverse / fast-slow middle | pointer problems |
+| 19 | `19-heap.ts` | binary min-heap: push / pop / peek, top-K | top-K, scheduling |
+| 20 | `20-queue.ts` | FIFO queue (head index) + BFS traversal | graph/tree BFS |
+| 21 | `21-interfaces.ts` | `interface`, `implements`, structural typing | modeling contracts |
+| 22 | `22-binarysearch.ts` | binary search: array / lower-bound / on the answer | sorted data, "minimize max" |
+| 23 | `23-backtracking.ts` | DFS+undo: subsets / permutations / combinations | exhaustive search |
+| 24 | `24-twopointer.ts` | converging ends + slow/fast on sorted data | sorted arrays, strings |
 
-When `make skill` reports all 17 passing, you've touched every core mechanic. Then start `sims/sim1`.
+When `make skill` reports all 24 passing, you've touched every core mechanic. Then start `sims/sim1`.
 
 ## Stretch (optional)
 

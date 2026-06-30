@@ -1,10 +1,3 @@
-- add date
-- add reduce contract
-- add regex
-- add json
-- extend class, super
-- interface
-
 # TS Cheatsheet (Rust-dev edition)
 
 Living doc. Add to it as you hit things. Core model: **structural typing** — matching shape means assignable. All numbers are floats. Use `===` only. `map.get(missing)` is `undefined`, not a panic.
