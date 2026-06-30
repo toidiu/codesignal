@@ -5,9 +5,9 @@ import { test, run, assert } from '../_harness';
 // A single node. `next` is the next node or null at the tail.
 export class ListNode {
   val: number;
-  next: ListNode | null;
+  next: ListNode | undefined;
 
-  constructor(val: number, next: ListNode | null = null) {
+  constructor(val: number, next: ListNode | undefined = undefined) {
     this.val = val;
     this.next = next;
   }
@@ -15,27 +15,88 @@ export class ListNode {
 
 // Build a list from an array; return the head (or null if empty).
 //   fromArray([1,2,3]) -> 1 -> 2 -> 3
-export function fromArray(nums: number[]): ListNode | null {
-  throw new Error('TODO: fromArray');
+export function fromArray(nums: number[]): ListNode | undefined {
+  let head: ListNode | undefined = undefined;
+  let prev: ListNode | undefined = undefined;
+
+  for (const n of nums) {
+    let curr: ListNode = new ListNode(n);
+
+    if (prev !== undefined) {
+      prev.next = curr;
+    }
+
+    if (head === undefined) {
+      head = curr;
+    }
+
+    prev = curr;
+  }
+
+  return head;
 }
 
 // Walk the list, collecting vals into an array.
 //   toArray(1->2->3) -> [1,2,3]
-export function toArray(head: ListNode | null): number[] {
-  throw new Error('TODO: toArray');
+export function toArray(head: ListNode | undefined): number[] {
+  const ret = [];
+
+  let curr = head;
+
+  while (curr !== undefined) {
+    ret.push(curr.val);
+
+    curr = curr.next;
+  }
+
+  return ret;
 }
 
 // Reverse the list in place; return the new head.
 //   reverse(1->2->3) -> 3->2->1
-export function reverse(head: ListNode | null): ListNode | null {
-  throw new Error('TODO: reverse');
+export function reverse(head: ListNode | undefined): ListNode | undefined {
+
+  let bef = undefined;
+  let curr = head;
+
+  // bef -> curr -> aft
+  while (curr !== undefined) {
+    // save aft
+    const aft = curr.next;
+
+    // update curr pointers
+    curr.next = bef;
+
+    // update state
+    bef = curr;
+    curr = aft;
+  }
+
+  return bef;
 }
 
 // Middle node via fast/slow pointers. On even length, return the SECOND middle.
 //   middle(1->2->3)   -> node(2)
 //   middle(1->2->3->4)-> node(3)
-export function middle(head: ListNode | null): ListNode | null {
-  throw new Error('TODO: middle');
+export function middle(head: ListNode | undefined): ListNode | undefined {
+  let slow = head;
+  let fast = head;
+
+  while (fast !== undefined && fast.next !== undefined) {
+
+    // move fast
+    fast = fast.next.next;
+    // fast = fast.next;
+    // if (fast === undefined) {
+    //   break;
+    // }
+    // fast = fast.next;
+
+    // move slow
+    slow = slow!.next;
+  }
+
+  return slow;
 }
 
 test('fromArray + toArray round-trip', () => {
@@ -45,7 +106,7 @@ test('fromArray + toArray round-trip', () => {
 
 test('reverse', () => {
   assert.deepStrictEqual(toArray(reverse(fromArray([1, 2, 3]))), [3, 2, 1]);
-  assert.strictEqual(reverse(null), null);
+  assert.strictEqual(reverse(undefined), undefined);
 });
 
 test('middle: second middle on even length', () => {
